@@ -1,0 +1,26 @@
+<p>address works!</p>
+<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></head>
+
+<table *ngIf="addresses" align='center'border='1'>
+    <tr>
+      <th>Address Id</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>City</th>
+      <th>StreetNo</th>
+      <th>BuildingName</th>
+      <th>PinCode</th>
+    </tr>
+      <tr *ngFor="let address of addresses">
+        <td>{{ address.addressId }} </td>
+        <td>{{ address.country }} </td>
+        <td>{{ address.state }}</td>
+        <td>{{ address.city }}</td>
+        <td>{{ address.streetNo }}</td>
+        <td>{{ address.buildingName }}</td>
+        <td>{{ address.pincode }}</td>
+  
+      </tr>
+    </table>
+
+    <p>This is address</p>

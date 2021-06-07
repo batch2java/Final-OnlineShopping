@@ -1,0 +1,18 @@
+*{
+    margin: 4px;
+    padding: 1px;
+}
+
+.navbar-brand{font-family: Verdana, Geneva, Tahoma, sans-serif; }
+
+.nav-link , .navbar-brand{ color: #000000; cursor: pointer;}
+
+.nav-link{ margin-right: 1em !important;}
+
+.nav-link:hover{ background: #496868; color: #eaee09; }
+
+.navbar-collapse{ justify-content: flex-end;}
+
+.navbar-collapse{
+    justify-content: flex-end;
+}

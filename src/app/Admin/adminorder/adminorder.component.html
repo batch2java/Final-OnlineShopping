@@ -1,0 +1,53 @@
+<app-admin-navbar></app-admin-navbar>
+<body>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="input-group col-lg-4 mb-4">
+                <input type="number" [(ngModel)]="oid" placeholder="Search By Customer Id " aria-label="Search"
+                    aria-describedby="search-addon" />
+                <button (click)="searchById()" class="btn btn-success">Search</button>
+            </div>
+
+
+            <div class="input-group col-lg-4 mb-4">
+                <br><br><input type="date" [(ngModel)]="date" placeholder="Search By Date " />
+                <button (click)="searchByDate()" class="btn btn-success">Search</button>
+            </div>
+            <div class="input-group col-lg-4 mb-4">
+                <input type="text" [(ngModel)]="location" placeholder="Search By Location " /><br>
+                <button (click)="searchByLocation()" class="btn btn-success">Search</button>
+            </div>
+        </div>
+    </div>
+
+        <h2 align="center">Orders List </h2>
+
+
+
+        <br>
+        <br>
+
+        <div class="container">
+            <table class="table" *ngIf="order" border="5">
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="text-align: center;">ORDER ID</th>
+                        <th style="text-align: center;">ORDER STATUS</th>
+                        <th style="text-align: center;">ORDER DATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     
+                    <tr *ngFor="let order of orders">
+                        <td style="text-align: center;">{{ order.orderId}}</td>
+                        <td style="text-align: center;">{{ order.orderStatus}}</td>
+                        <td style="text-align: center;">{{ order.orderDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</body>

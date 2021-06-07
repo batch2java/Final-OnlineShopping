@@ -1,0 +1,183 @@
+<!-- <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+  <title>Bootstrap Sign up Form with Icons</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head> -->
+<app-admin-navbar></app-admin-navbar>
+<br> <br>
+<body>
+<br>
+<br>
+<div class="container">
+
+  <div class="row">
+
+    <div class="input-group col-lg-4 mb-4">
+      <div class="input-group-prepend">
+        <br><br><input type="number" [(ngModel)]="pid" placeholder="Search By Product Id " /><br><br>
+        <button (click)="searchById()" class="btn btn-success">Search</button>
+      </div>
+    </div>
+
+    <div class="input-group col-lg-4 mb-4">
+      <div class="input-group-prepend">
+        <select input type="text" [(ngModel)]="cat">
+          <option *ngFor="let c of category" [value]="c" placeholder="Search By Category ">{{c}}</option>
+        </select><br>
+        <button (click)="searchByCategory()" class="btn btn-success">Search</button>
+      </div>
+    </div>
+
+    <div class="input-group col-lg-4 mb-4">
+      <div class="input-group-prepend">
+        <br><br><input type="text" [(ngModel)]="pname" placeholder="Search By Product Name" /><br>
+        <button (click)="searchByName()" class="btn btn-success">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+<div class="row">
+  
+  <div *ngFor="let  p of products ">
+    <div class="col-md-12 row-md-3">
+    <div class="card">
+      <div class="img-wrapper">
+        <img class="img" src="{{p.productImage}} ">
+      </div>
+      <ul class="list-inline text-center">
+        <li class="list-inline-item">
+          <button routerLink="/productdetails/{{p.productId}}" class="btn btn-primary">Details</button>
+        </li>
+        <li class="list-inline-item">
+          <button (click)="detail(p.productId)" class="btn btn-primary">Edit</button>
+        </li>
+        <li class="list-inline-item">
+          <button (click)="remove(p.productId)" class="btn btn-primary">Delete</button>
+        </li>
+      </ul>
+      <div class="card-body p-2">
+        <label>Product Id:</label>{{p.productId}}<br>
+        <label>Name:</label>{{p.productName}}<br>
+        <label>Quantity:</label>{{p.quantity}}<br>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div *ngIf="product.productId>0"> 
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center mb-5"><u>Edit Product</u></h2>
+        
+        <div class="row">
+          <div class="col-md-6  mx-auto">
+            <div class="card border-secondary">
+            
+              <div class="container">
+
+                <br>
+                <br>
+                <form [formGroup]="addProduct" (ngSubmit)="editproduct(product.productId)" class="form" role="form" autocomplete="off">
+
+
+                  
+													<div class="form-group" >
+														
+                            <label class="text-secondary ml-2 font-weight-bold">Name</label>
+                          <input type="text" class="form-control" formControlName="name" id="pname" required [(ngModel)]="product.productName" name="pname" placeholder="Product Name *">
+                          <div *ngIf=" Submitted && addProduct.controls.name.errors"><code style="color: red;" >Give Product Name</code></div>
+                            
+                          
+                          </div>
+                        <div class="form-group">
+                          
+                            <label class="text-secondary ml-2 font-weight-bold">Price</label>
+                            <input type="text" class="form-control" formControlName="price" id="price" required [(ngModel)]="product.price" name="price"placeholder="Product Price *">
+                            <div *ngIf=" Submitted && addProduct.controls.price.errors"><code style="color: red;" >Give Product Price</code></div>
+                          </div>
+                          <div class="form-group">
+                          
+                            <label class="text-secondary ml-2 font-weight-bold">Color</label>
+                            <select input type="text" class="form-control" formControlName="color" id="color" required [(ngModel)]="product.color" name="color" placeholder="Product Color *">
+                            <option value="color"disabled >Color *</option>
+                            <option *ngFor="let c of color" [value]="c">{{c}}</option>
+                          </select> 
+                          <div *ngIf=" Submitted && addProduct.controls.color.errors"><code style="color: red;" >Give Product Color</code></div>
+                          
+                          </div>
+                          <div class="form-group">
+                          
+                            <label class="text-secondary ml-2 font-weight-bold">Dimension</label>
+                            <input type="text" class="form-control" formControlName="dimension" id="dimension" required [(ngModel)]="product.dimension" name="dimension" placeholder="Product Dimension *">
+                            <div *ngIf=" Submitted && addProduct.controls.dimension.errors"><code style="color: red;" >Give Product Dimension</code></div>
+                          </div>
+                          
+                          
+                          <div class="form-group">
+                          
+                            <label class="text-secondary ml-2 font-weight-bold">Manufacturer</label>
+                            <input type="text" class="form-control" formControlName="manufacturer" id="manufacturer" required [(ngModel)]="product.manufacturer" name="manufacturer" placeholder="Product Manufacturer *">
+                            <div *ngIf=" Submitted && addProduct.controls.manufacturer.errors"><code style="color: red;" >Give Product Manufacturer</code></div>
+                          </div>
+                          <div class="form-group">
+                          
+                          <label class="text-secondary ml-2 font-weight-bold">Specification</label>
+                          <input type="text" class="form-control" formControlName="specification" id="specification" required [(ngModel)]="product.specification" name="specification" placeholder="Product Specification *">
+                            <div *ngIf=" Submitted && addProduct.controls.specification.errors"><code style="color: red;" >Give Product Specification</code></div>
+                        </div>
+                          <div class="form-group">
+                          
+                            <label class="text-secondary ml-2 font-weight-bold">Quantity</label>
+                            <input type="text" class="form-control" formControlName="quantity" id="quantity" required [(ngModel)]="product.quantity" name="quantity" placeholder="Product Quantity *">
+                            <div *ngIf=" Submitted && addProduct.controls.quantity.errors"><code style="color: red;" >Give Product Quantity</code></div>
+                          </div>
+                          <div class="form-group">
+                          
+                            <label class="text-secondary ml-2 font-weight-bold">Category</label>
+                            <select input type="text" class="form-control" formControlName="category" id="country"  required [(ngModel)]="product.category.categoryName" name="country">
+                            <option value="" ></option>
+                            <option *ngFor="let c of category" [value]="c">{{c}}</option>
+                          </select> 
+                          <div *ngIf=" Submitted && addProduct.controls.category.errors" ><code style="color: red;" >Category required</code></div>
+                        </div>
+                        
+                          
+                          <div class="form-group">
+                          <label class="text-secondary ml-2 font-weight-bold">Image</label>
+                          <input type="text" class="form-control" formControlName="image" id="image"  required [(ngModel)]="product.productImage" name="image">
+                          <div *ngIf=" Submitted && addProduct.controls.image.errors" ><code style="color: red;" >Provide Image URL</code></div>
+                          </div>
+
+                    <br>
+                    <div align ="center" class="form-group col-md-16 mx-auto">
+                  <button type="submit" align="center" class="btn btn-warning">Update Product</button>
+                </div>
+                <br>
+                  </form> 
+              </div> 
+            </div>
+          </div>
+        </div>
+        
+  
+      </div>
+      
+    </div>
+    
+  </div>
+
+
+</div>
+
+
+

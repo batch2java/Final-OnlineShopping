@@ -1,0 +1,52 @@
+
+
+<body>
+<div class="container">
+    <br>
+    <br>
+    <h1>Product Details</h1>
+    <br>
+    <div class="row">
+        <div class="col-lg-6">
+            <table align="center" class="table table-bordered table-striped" >
+                <thead class="thead-dark">
+                <tr>
+                    <td>Name</td>
+                    <td>{{productData['productName']}}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{productData['price']}}</td>
+                </tr>
+                <tr>
+                    <td>color</td>
+                    <td>{{productData['color']}}</td>
+                </tr>
+                <tr>
+                    <td>dimension</td>
+                    <td>{{productData['dimension']}}</td>
+                </tr>
+                <tr>
+                    <td>specification</td>
+                    <td>{{productData['specification']}}</td>
+                </tr>
+                <tr>
+                    <td>manufacturer</td>
+                    <td>{{productData['manufacturer']}}</td>
+                </tr>
+                <tr>
+                    <td>quantity</td>
+                    <td>{{productData['quantity']}}</td>
+                </tr>
+            </thead>
+            </table>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="onBack()">Back</button>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+

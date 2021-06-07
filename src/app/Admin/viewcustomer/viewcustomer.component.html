@@ -1,0 +1,70 @@
+<app-admin-navbar></app-admin-navbar>
+
+<body>
+  <br>
+  <br>
+<br>
+<div class="container">
+<div class="row">
+  
+  <div class="input-group col-lg-1 mb-1"></div>
+<div class="input-group col-lg-5 mb-5">
+<br><br><input type="number" [(ngModel)]="id" placeholder="Search By Customer Id "/>
+<button (click)="searchById()" class="btn btn-success" >Search</button>
+</div>
+<div class="input-group col-lg-1 mb-1"></div>
+<div class="input-group col-lg-5 mb-5">
+<input type="text" [(ngModel)]="location" placeholder="Search By Location "/><br>
+<button (click)="searchByLocation()" class="btn btn-success">Search</button>
+</div>
+</div>
+
+
+  <br>
+    <h2 align="center">Customer Details </h2> <br><br>
+        
+<table class="table " *ngIf="customer" style="text-align: center;" border="5">  
+<thead class="thead-dark">
+<tr>
+    <th style="text-align: center;">Customer ID</th>
+    <th style="text-align: center;">Customer Name</th>
+    <th style="text-align: center;">Mobile No</th>
+    <th style="text-align: center;">Email</th>
+    <th style="text-align: center;">Building Name</th>
+    <th style="text-align: center;">Street No</th>
+    <th style="text-align: center;">City</th>
+    <th style="text-align: center;">State</th>
+    <th style="text-align: center;">Country</th>
+    <th style="text-align: center;">Pincode</th>
+    
+ </tr>
+ <tbody>
+  <tr *ngFor="let customer of customers">
+    <td style="text-align: center;">{{ customer.customerId}}</td>
+    <td style="text-align: center;">{{ customer.firstName}}</td>
+    <td style="text-align: center;">{{ customer.mobileNumber}}</td>
+    <td style="text-align: center;">{{ customer.email}}</td>
+    <td style="text-align: center;">{{customer.buildingName}}</td>
+    <td style="text-align: center;">{{customer.streetNo}}</td>
+    <td style="text-align: center;">{{customer.city}}</td>
+    <td style="text-align: center;">{{customer.state}}</td>
+    <td style="text-align: center;">{{customer.country}}</td>
+    <td style="text-align: center;">{{customer.pincode}}</td>
+       
+    </tr>
+ </tbody>
+ 
+  </table>
+
+
+
+
+<br>
+<br>
+
+
+
+ 
+   
+     
+    
